@@ -1,7 +1,5 @@
-name: GitHub Actions Demo
-on:
-  pull_request:
-    types: [opened]
+name: hello-world
+on: [pull_request]
 
 jobs:
   check-description:
@@ -13,6 +11,10 @@ jobs:
         run: |
           echo $RAW_BODY
           echo $RAW_TITLE
+          echo $TESTBDY
+          echo $TEST
         env:
           RAW_BODY: ${{ github.event.pull_request.body }}
           RAW_TITLE: ${{ github.event.pull_request.title }}
+          TESTBODY: ${{ github.event.inputs.body }}
+          TEST: ${{ github.event.inputs.test }}
