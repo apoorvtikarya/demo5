@@ -1,6 +1,6 @@
 on:
   pull_request:
-    types: push
+    types: [opened]
 
 jobs:
   check-description:
