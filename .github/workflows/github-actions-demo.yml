@@ -1,15 +1,8 @@
-on:
-  pull_request:
-    types: [opened]
-
+name: github-actions-demo
+on: push
 jobs:
-  check-description:
-    name: Check that PR has description
+  my-job:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check if PR is shame-worthy
-        id: is-shame-worthy
-
-        env:
-          RAW_BODY: ${{ github.event.pull_request.body }}
+      - name: my-step
+          run : echo "${{ github.event.pull_request.body }}"
