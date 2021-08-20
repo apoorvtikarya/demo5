@@ -1,17 +1,28 @@
-name: GitHub Actions Demo
-on: [push]
+on:
+  pull_request:
+    types: [opened]
+
 jobs:
-  Explore-GitHub-Actions:
+  check-description:
+    name: Check that PR has description
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v2
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
+      - name: Check if PR is shame-worthy
+        id: is-shame-worthy
         run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+          FILTERED_BODY=$( sed -r -e '/^(##? )|(- *\[)/d' <<< $RAW_BODY )
+          echo "::debug::Filtered PR body to $FILTERED_BODY"
+          if [[ -z "${FILTERED_BODY//[[:space:]]/}" ]]; then
+              echo "::set-output name=is-shame-worthy::true"
+          else
+              echo "::set-output name=is-shame-worthy::false"
+          fi
+        env:
+          RAW_BODY: ${{ github.event.pull_request.body }}
+
+      - name: Shame if PR has no description
+        if: steps.is-shame-worthy.outputs.is-shame-worthy == 'true'
+        run: |
+          SHAME_BODY="Hey @${{ github.actor }}! 👋\nThis pull request seems to contain no description. Please add useful context, rationale, and/or any other information that will help make sense of this change now and in the distant Mars-based future."
+          curl -s -u posthog-bot:${{ secrets.GITHUB_TOKEN }} -X POST -d "{ \"body\": \"$SHAME_BODY\" }" "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments"
