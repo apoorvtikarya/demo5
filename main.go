@@ -1,4 +1,4 @@
-package workflows
+package main
 
 import (
 	"fmt"
@@ -6,18 +6,10 @@ import (
 	"os"
 	"regexp"
 	"strings"
-	"testing"
-
-	_ "gopkg.in/yaml.v3"
 )
 
-func Test_Tittle1(t *testing.T) {
-	//var title string
-	//_, err := fmt.Scanln(&title)
-	//if err != nil {
-	//	return
-	//}
-	//err = os.Setenv("TITLE", title)
+func main() {
+
 	err := os.Setenv("TITLE", "feat(dot/rpc): implement chain_subscribeAllHeads RPC")
 	if err != nil {
 		return
@@ -26,17 +18,12 @@ func Test_Tittle1(t *testing.T) {
 	var match, _ = regexp.MatchString(".+\\(.+\\)\\:.+", os.Getenv("TITLE"))
 	fmt.Println(match)
 
-	data, err := ioutil.ReadFile("BODY_TEMPLATE.md")
+	data, err := ioutil.ReadFile("BODY_TITLE_TEMPLATE.md")
 	if err != nil {
 		fmt.Println("File reading error", err)
 		return
 	}
-	//var body string
-	//_, err = fmt.Scanln(&body)
-	//if err != nil {
-	//	return
-	//}
-	//err = os.Setenv("BODY", body)
+
 	err = os.Setenv("BODY", string(data))
 	fmt.Println(os.Getenv("BODY"))
 	//data1 := strings.Split(body, "")
@@ -64,3 +51,4 @@ func Test_Tittle1(t *testing.T) {
 	var validPR = regexp.MustCompile(`## Changes.*-.+[A-Za-z0-9].+## Tests.*-[A-Za-z0-9].+## Issues.*-.+[A-Za-z0-9].+## Primary Reviewer.*-.+[A-Za-z0-9].+`)
 	fmt.Println(validPR.MatchString(joinedLine))
 }
+

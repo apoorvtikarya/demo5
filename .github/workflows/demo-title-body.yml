@@ -10,8 +10,7 @@ jobs:
     steps:
       - name: Check if PR is shame-worthy
         run: |
-          echo $RAW_BODY
-          echo $RAW_TITLE
+          go run title_body_test.go
         env:
           RAW_TITLE: ${{ github.event.pull_request.title }}
           RAW_BODY: ${{ github.event.pull_request.body  }}
