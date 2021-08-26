@@ -12,11 +12,16 @@ import (
 )
 
 func Test_Tittle_body(t *testing.T) {
-
-	err := os.Setenv("TITLE", "feat(dot/rpc): implement chain_subscribeAllHeads RPC")
-	if err != nil {
-		return
-	}
+	//var title string
+	//_, err := fmt.Scanln(&title)
+	//if err != nil {
+	//	return
+	//}
+	//err = os.Setenv("TITLE", title)
+	//err := os.Setenv("TITLE", "feat(dot/rpc): implement chain_subscribeAllHeads RPC")
+	//if err != nil {
+	//	return
+	//}
 	fmt.Println("TITLE:", os.Getenv("TITLE"))
 	var match, _ = regexp.MatchString(".+\\(.+\\)\\:.+", os.Getenv("TITLE"))
 	fmt.Println(match)
@@ -26,8 +31,13 @@ func Test_Tittle_body(t *testing.T) {
 		fmt.Println("File reading error", err)
 		return
 	}
-
-	err = os.Setenv("BODY", string(data))
+	//var body string
+	//_, err = fmt.Scanln(&body)
+	//if err != nil {
+	//	return
+	//}
+	//err = os.Setenv("BODY", body)
+	//err = os.Setenv("BODY", string(data))
 	fmt.Println(os.Getenv("BODY"))
 	//data1 := strings.Split(body, "")
 	data1 := strings.Split(string(data), "")
