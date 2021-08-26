@@ -18,10 +18,10 @@ func Test_Tittle1(t *testing.T) {
 	//	return
 	//}
 	//err = os.Setenv("TITLE", title)
-	err := os.Setenv("TITLE", "feat(dot/rpc): implement chain_subscribeAllHeads RPC")
-	if err != nil {
-		return
-	}
+	//err := os.Setenv("TITLE", "feat(dot/rpc): implement chain_subscribeAllHeads RPC")
+	//if err != nil {
+	//	return
+	//}
 	fmt.Println("TITLE:", os.Getenv("TITLE"))
 	var match, _ = regexp.MatchString(".+\\(.+\\)\\:.+", os.Getenv("TITLE"))
 	fmt.Println(match)
@@ -37,7 +37,7 @@ func Test_Tittle1(t *testing.T) {
 	//	return
 	//}
 	//err = os.Setenv("BODY", body)
-	err = os.Setenv("BODY", string(data))
+	//err = os.Setenv("BODY", string(data))
 	fmt.Println(os.Getenv("BODY"))
 	//data1 := strings.Split(body, "")
 	data1 := strings.Split(string(data), "")
@@ -61,6 +61,6 @@ func Test_Tittle1(t *testing.T) {
 	lineSplit := strings.Split(result, "\n")
 	joinedLine := strings.Join(lineSplit, "")
 	fmt.Println("Joined line: ", joinedLine)
-	var validPR = regexp.MustCompile(`## Changes.*-.+[A-Za-z0-9].+## Tests.*-[A-Za-z0-9].+## Issues.*-.+[A-Za-z0-9].+## Primary Reviewer.*-.+[A-Za-z0-9].+`)
+	var validPR = regexp.MustCompile(`## Changes.*- .+[A-Za-z0-9].+## Tests.*- .+[A-Za-z0-9].+## Issues.*- .+[A-Za-z0-9].+## Primary Reviewer.*- .+[A-Za-z0-9].+`)
 	fmt.Println(validPR.MatchString(joinedLine))
 }
