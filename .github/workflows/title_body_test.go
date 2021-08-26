@@ -12,12 +12,7 @@ import (
 )
 
 func Test_Tittle_body(t *testing.T) {
-	//var title string
-	//_, err := fmt.Scanln(&title)
-	//if err != nil {
-	//	return
-	//}
-	//err = os.Setenv("TITLE", title)
+
 	err := os.Setenv("TITLE", "feat(dot/rpc): implement chain_subscribeAllHeads RPC")
 	if err != nil {
 		return
