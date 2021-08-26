@@ -10,30 +10,7 @@ jobs:
     steps:
       - name: Check if PR is shame-worthy
         run: |
-          while [ "$1" != "" ]; do
-                  case $1 in
-                  -c | --Changes)                  shift
-                                                   Changes=$1
-                                                   ;;
-                  -t | --Tests )                   shift
-                                                   Tests=$1
-                                                    ;;
-                                                   shift
-                  -i | --Issue)                    Issue=$1
-                                                   ;;
-                                                   shift
-                  -p | --Primary Reviewer)         Primary Reviewer=$1
-                                                   ;;
-                  * )                              break
-                  esac
-                  shift
-                  done
           echo $RAW_BODY
-          echo Changes: "$Changes"
-          echo Tests: "$Tests"
-          echo Issue: "$Issue"
-          echo Primary Reviewer: "$Primary Reviewer"
-          RAW_TITLE = $([a-zA-Z0-9_/-\.]+)(([a-zA-Z0-9_/-\.]+)):([a-zA-Z0-9_/-\.]+)
           echo $RAW_TITLE
         env:
           RAW_TITLE: ${{ github.event.pull_request.title }}
