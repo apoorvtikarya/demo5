@@ -7,10 +7,9 @@ jobs:
   check-description:
     name: Check that PR has description
     runs-on: ubuntu-latest
-    uses: actions/checkout@v2
-
     steps:
       - name: Check if PR is shame-worthy
+      - uses: actions/checkout@v2
         run: |
           go run .github/workflows/main.go
 
