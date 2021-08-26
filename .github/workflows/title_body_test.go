@@ -26,12 +26,8 @@ func Test_Tittle_body(t *testing.T) {
 		fmt.Println("File reading error", err)
 		return
 	}
-	//var body string
-	//_, err = fmt.Scanln(&body)
-	//if err != nil {
-	//	return
-	//}
-	//err = os.Setenv("BODY", body)
+
+
 	err = os.Setenv("BODY", string(data))
 	fmt.Println(os.Getenv("BODY"))
 	//data1 := strings.Split(body, "")
