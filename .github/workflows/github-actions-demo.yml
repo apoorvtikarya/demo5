@@ -8,8 +8,8 @@ jobs:
     name: Check that PR has description
     runs-on: ubuntu-latest
     steps:
-      - name: Check if PR is shame-worthy
       - uses: actions/checkout@v2
+      - name: Check if PR is shame-worthy
         run: |
           go run .github/workflows/main.go
 
