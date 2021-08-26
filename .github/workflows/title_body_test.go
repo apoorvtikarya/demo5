@@ -1,4 +1,4 @@
-package workflows
+package main
 
 import (
 	"fmt"
@@ -11,7 +11,7 @@ import (
 	_ "gopkg.in/yaml.v3"
 )
 
-func Test_Tittle1(t *testing.T) {
+func Test_Tittle_body(t *testing.T) {
 	//var title string
 	//_, err := fmt.Scanln(&title)
 	//if err != nil {
