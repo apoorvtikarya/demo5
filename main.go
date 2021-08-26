@@ -6,12 +6,9 @@ import (
 	"os"
 	"regexp"
 	"strings"
-	"testing"
-
-	_ "gopkg.in/yaml.v3"
 )
 
-func Test_Tittle_body(t *testing.T) {
+func main() {
 
 	err := os.Setenv("TITLE", "feat(dot/rpc): implement chain_subscribeAllHeads RPC")
 	if err != nil {
@@ -21,15 +18,13 @@ func Test_Tittle_body(t *testing.T) {
 	var match, _ = regexp.MatchString(".+\\(.+\\)\\:.+", os.Getenv("TITLE"))
 	fmt.Println(match)
 
-	data, err := ioutil.ReadFile("BODY_TEMPLATE.md")
+	data, err := ioutil.ReadFile("BODY_TITLE_TEMPLATE.md")
 	if err != nil {
 		fmt.Println("File reading error", err)
 		return
 	}
-
 	err = os.Setenv("BODY", string(data))
 	fmt.Println(os.Getenv("BODY"))
-	//data1 := strings.Split(body, "")
 	data1 := strings.Split(string(data), "")
 	data2 := make([]string, len(data1))
 	for i := 0; i < len(data1); i++ {
