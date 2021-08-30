@@ -11,8 +11,8 @@ func main() {
 	if match == false{
 		os.Exit(1)
 	}
-
-	data := os.Getenv("BODY")
+    var data string
+	data = os.Getenv("BODY")
 	data1 := strings.Split(data, "")
 	data2 := make([]string, len(data1))
 	for i := 0; i < len(data1); i++ {
