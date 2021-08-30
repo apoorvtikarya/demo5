@@ -13,6 +13,8 @@ jobs:
         run: |
           go run .github/workflows/main.go
           echo $?
+          echo $RAW_TITLE
+          echo $RAW_BODY
 
         env:
           RAW_TITLE: ${{ github.event.pull_request.title }}
