@@ -12,11 +12,11 @@ import (
 
 func Test_Tittle_body(t *testing.T) {
 	var title string
-	_, err := fmt.Scanln(&title)
-	if err != nil {
-		return
-	}
-	err = os.Setenv("TITLE", title)
+	//_, err := fmt.Scanln(&title)
+	//if err != nil {
+	//	return
+	//}
+	err := os.Setenv("TITLE", title)
 	//err := os.Setenv("TITLE", "feat(dot/rpc): implement chain_subscribeAllHeads RPC")
 	if err != nil {
 		return
@@ -38,10 +38,10 @@ func Test_Tittle_body(t *testing.T) {
 	//data1 := strings.Split(body, "")
 	//data1 := strings.Split(string(data), "")
 	var data string
-	_, err = fmt.Scanln(&data)
-	if err != nil {
-		return
-	}
+	//_, err = fmt.Scanln(&data)
+	//if err != nil {
+	//	return
+	//}
 	err = os.Setenv("BODY", data)
 	fmt.Println(os.Getenv("BODY"))
     data1 := strings.Split(data, "")
