@@ -9,9 +9,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Check if PR is shame-worthy
         run: |
-          go run .github/workflows/main.go
           echo $RAW_TITLE
           echo $RAW_BODY
+          go run .github/workflows/main.go
 
         env:
           RAW_TITLE: ${{ github.event.pull_request.title }}
