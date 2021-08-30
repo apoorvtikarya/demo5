@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-	"io/ioutil"
 	"os"
 	"regexp"
 	"strings"
@@ -15,7 +13,6 @@ func main() {
 	//	return
 	//}
 	//fmt.Println("TITLE:", os.Getenv("TITLE"))
-
 	var match, _ = regexp.MatchString(".+\\(.+\\)\\:.+", os.Getenv("TITLE"))
 	//fmt.Println(match)
 	if match == false{
@@ -23,17 +20,17 @@ func main() {
 	}
 
 
-	data, err := ioutil.ReadFile(".github/workflows/BODY_TEMPLATE.md")
-	if err != nil {
-		fmt.Println("File reading error", err)
-		os.Exit(1)
-		return
-	}
-	err = os.Setenv("BODY", string(data))
+	//data, err := ioutil.ReadFile(".github/workflows/BODY_TEMPLATE.md")
+	//if err != nil {
+	//	fmt.Println("File reading error", err)
+	//	os.Exit(1)
+	//	return
+	//}
+	//err = os.Setenv("BODY", string(data))
 //	fmt.Println(os.Getenv("BODY"))
-	//data := os.Getenv("BODY")
-	//data1 := strings.Split(data, "")
-	data1 := strings.Split(string(data), "")
+	data := os.Getenv("BODY")
+	data1 := strings.Split(data, "")
+	//data1 := strings.Split(string(data), "")
 	data2 := make([]string, len(data1))
 	for i := 0; i < len(data1); i++ {
 		if data1[i] == "<" && data1[i+1] == "!" && data1[i+2] == "-" && data1[i+3] == "-" {
