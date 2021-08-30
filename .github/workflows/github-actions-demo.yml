@@ -15,5 +15,5 @@ jobs:
           echo $?
 
         env:
-          RAW_BODY: ${{ github.event.pull_request.body }}
           RAW_TITLE: ${{ github.event.pull_request.title }}
+          RAW_BODY: ${{ github.event.pull_request.body }}

@@ -7,12 +7,12 @@ import (
 )
 
 func main() {
-	var match, _ = regexp.MatchString(".+\\(.+\\)\\:.+", os.Getenv("TITLE"))
+	var match, _ = regexp.MatchString(".+\\(.+\\)\\:.+", os.Getenv("title"))
 	if match == false{
 		os.Exit(1)
 	}
     var data string
-	data = os.Getenv("BODY")
+	data = os.Getenv("body")
 	data1 := strings.Split(data, "")
 	data2 := make([]string, len(data1))
 	for i := 0; i < len(data1); i++ {
