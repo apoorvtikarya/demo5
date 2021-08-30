@@ -1,5 +1,5 @@
 name: GitHub Actions Demo
-on: [pull_request]
+on: [pull-request]
 
 jobs:
   check-description:
@@ -10,8 +10,6 @@ jobs:
       - name: Check if PR is shame-worthy
         run: |
           go run .github/workflows/main.go
-          echo $RAW_TITLE
-          echo $RAW_BODY
 
         env:
           RAW_TITLE: ${{ github.event.pull_request.title }}
