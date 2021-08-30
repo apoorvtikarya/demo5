@@ -12,7 +12,6 @@ jobs:
       - name: Check if PR is shame-worthy
         run: |
           go run .github/workflows/main.go
-          echo $?
           echo $RAW_TITLE
           echo $RAW_BODY
 
