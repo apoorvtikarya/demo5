@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"regexp"
 	"strings"
@@ -12,8 +11,13 @@ import (
 )
 
 func Test_Tittle_body(t *testing.T) {
-
-	err := os.Setenv("TITLE", "feat(dot/rpc): implement chain_subscribeAllHeads RPC")
+	var title string
+	_, err := fmt.Scanln(&title)
+	if err != nil {
+		return
+	}
+	err = os.Setenv("TITLE", title)
+	//err := os.Setenv("TITLE", "feat(dot/rpc): implement chain_subscribeAllHeads RPC")
 	if err != nil {
 		return
 	}
@@ -21,17 +25,26 @@ func Test_Tittle_body(t *testing.T) {
 	var match, _ = regexp.MatchString(".+\\(.+\\)\\:.+", os.Getenv("TITLE"))
 	fmt.Println(match)
 
-	data, err := ioutil.ReadFile("BODY_TEMPLATE.md")
+	//data, err := ioutil.ReadFile("BODY_TEMPLATE.md")
+	//if err != nil {
+	//	fmt.Println("File reading error", err)
+	//	return
+	//}
+	//
+	//
+	//err = os.Setenv("BODY", string(data))
+	//err = os.Setenv("BODY", string(data))
+	//fmt.Println(os.Getenv("BODY"))
+	//data1 := strings.Split(body, "")
+	//data1 := strings.Split(string(data), "")
+	var data string
+	_, err = fmt.Scanln(&data)
 	if err != nil {
-		fmt.Println("File reading error", err)
 		return
 	}
-
-
-	err = os.Setenv("BODY", string(data))
+	err = os.Setenv("BODY", data)
 	fmt.Println(os.Getenv("BODY"))
-	//data1 := strings.Split(body, "")
-	data1 := strings.Split(string(data), "")
+    data1 := strings.Split(data, "")
 	data2 := make([]string, len(data1))
 	for i := 0; i < len(data1); i++ {
 		if data1[i] == "<" && data1[i+1] == "!" && data1[i+2] == "-" && data1[i+3] == "-" {
@@ -54,4 +67,5 @@ func Test_Tittle_body(t *testing.T) {
 	fmt.Println("Joined line: ", joinedLine)
 	var validPR = regexp.MustCompile(`## Changes.*- .+[A-Za-z0-9].+## Tests.*- .+[A-Za-z0-9].+## Issues.*- .+[A-Za-z0-9].+## Primary Reviewer.*- .+[A-Za-z0-9].+`)
 	fmt.Println(validPR.MatchString(joinedLine))
+
 }

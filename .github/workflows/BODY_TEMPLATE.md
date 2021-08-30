@@ -13,7 +13,7 @@ in functionality rather than the changes in code.
 Details on how to run tests relevant to the changes within this pull request.
 -->
 
-- tests for demo:123{}|[]\;':"<>,.?/
+- tests for demo:123{}
 
 ## Issues
 
@@ -22,7 +22,7 @@ Please link any issues that this pull request is related to and use the GitHub
 supported format for automatically closing issues (ie, closes #123, fixes #123)
 -->
 
-- issues for demo:43434_?!@#$%^&*()
+- issues for demo:43434
 
 ## Primary Reviewer
 
