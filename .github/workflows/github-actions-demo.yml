@@ -12,6 +12,7 @@ jobs:
       - name: Check if PR is shame-worthy
         run: |
           go run .github/workflows/main.go
+          echo $?
 
         env:
           RAW_BODY: ${{ github.event.pull_request.body }}
