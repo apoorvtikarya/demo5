@@ -33,7 +33,7 @@ func main() {
 	}
 	lineSplit := strings.Split(result, "\n")
 	joinedLine := strings.Join(lineSplit, "")
-	var validPR,_= regexp.MatchString(`## Changes.*-.+[A-Za-z0-9].+## Tests.*-.+[A-Za-z0-9].+## Issues.*-.+[A-Za-z0-9].+## Primary Reviewer.*-.+[A-Za-z0-9].+`,joinedLine)
+	var validPR,_= regexp.MatchString(`## Changes.*- .+[A-Za-z0-9].+## Tests.*- .+[A-Za-z0-9].+## Issues.*- .+[A-Za-z0-9].+## Primary Reviewer.*- .+[A-Za-z0-9].+`,joinedLine)
 	if validPR == false{
 		os.Exit(1)
 	}
