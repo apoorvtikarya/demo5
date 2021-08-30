@@ -10,14 +10,14 @@ import (
 
 func main() {
 
-	err := os.Setenv("TITLE", "feat(dot/rpc): implement chain_subscribeAllHeads RPC")
-	if err != nil {
-		return
-	}
-	fmt.Println("TITLE:", os.Getenv("TITLE"))
+	//err := os.Setenv("TITLE", "feat(dot/rpc): implement chain_subscribeAllHeads RPC")
+	//if err != nil {
+	//	return
+	//}
+	//fmt.Println("TITLE:", os.Getenv("TITLE"))
 
 	var match, _ = regexp.MatchString(".+\\(.+\\)\\:.+", os.Getenv("TITLE"))
-	fmt.Println(match)
+	//fmt.Println(match)
 	if match == false{
 		os.Exit(1)
 	}
